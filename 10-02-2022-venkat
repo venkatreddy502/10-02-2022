@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *fp;
+	struct stu
+	{
+		int rollno;
+		char name[20];
+		float examfee;
+	};
+	int i;
+	struct stu s1;
+	fp=fopen("stu.dat","r");
+	printf("\nStudents Data\n");
+	for(i=0;i<5;i++)
+	{
+		fread(&s1,sizeof(struct stu),1,fp);
+		printf("\nEnter Rollno\t=%d",s1.rollno);
+		printf("\nEnter Name\t=%s",s1.name);
+		printf("\nEnter ExamFee\t=%7.2f",s1.examfee);
+	}
+	fclose(fp);
+}
